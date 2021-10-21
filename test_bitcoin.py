@@ -67,12 +67,9 @@ class Test_bitcoin_rates(TestCase):
     def test_display(self, mock_print):
         bitcoins = 50
         value = 3223726
+        bitcoin.display_exchange_rate(bitcoins, value)
 
-        expected_print = ('50.0, Bitcoin is worth $3223726')]
-
-        mock_print.assert_called_once_with('50.0, Bitcoin is worth $3223726')
-        #returned=bitcoin.display_exchange_rate(bitcoins, value)
-        #mock_print.assert_has_calls(expected_print)
+        mock_print.assert_called_once_with('50 Bitcoin is worth $3223726')
 
     @patch('builtins.input', side_effect=['-1', '-100','-0.5', '0.5'])
     def test_non_positive_input(self, mock_input):
